@@ -1,4 +1,4 @@
-package hello.web.form;
+package hello.web.item.form;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
