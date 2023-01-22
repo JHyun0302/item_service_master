@@ -1,17 +1,28 @@
 package hello;
 
+import hello.web.argumentresolver.LoginMemberArgumentResolver;
 import hello.web.fiter.LogFilter;
 import hello.web.interceptor.LogInterceptor;
 import hello.web.interceptor.LoginCheckInterceptor;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.servlet.Filter;
+import java.util.List;
 
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
+    /**
+     * argumentResolver 작동을 위해 등록
+     */
+    @Override
+    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
+        resolvers.add(new LoginMemberArgumentResolver());
+    }
+
     /**
      * 스프링 인터셉터 작동을 위해 등록
      */
