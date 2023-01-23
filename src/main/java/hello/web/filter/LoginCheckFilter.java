@@ -1,4 +1,4 @@
-package hello.web.fiter;
+package hello.web.filter;
 
 import hello.web.SessionConst;
 import lombok.extern.slf4j.Slf4j;
