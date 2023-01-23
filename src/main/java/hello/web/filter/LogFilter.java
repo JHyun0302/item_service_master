@@ -1,4 +1,4 @@
-package hello.web.fiter;
+package hello.web.filter;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -29,7 +29,8 @@ public class LogFilter implements Filter {
             log.info("REQUEST [{}][{}]", uuid, requestURI);
             chain.doFilter(request, response); //다음 필터 호출(다음 필터 없으면 서블릿 호출)
         } catch (Exception e) {
-            throw e;
+            log.info("EXCEPTION {}", e.getMessage());
+            throw e; //에러 잡으면 WAS까지 거슬러 올라감!
         } finally {
             log.info("RESPONSE [{}][{}]", uuid, requestURI);
         }
