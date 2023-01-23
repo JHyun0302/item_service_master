@@ -1,4 +1,4 @@
-package hello.domain.item;
+package hello.domain.item.itemService;
 
 import org.springframework.stereotype.Repository;
 
@@ -31,6 +31,11 @@ public class ItemRepository {
         findItem.setItemName(updateParam.getItemName());
         findItem.setPrice(updateParam.getPrice());
         findItem.setQuantity(updateParam.getQuantity());
+        //체크박스 체크 풀고 저장해도 상품 상세에서 계속 체크되서 보이는 버그 수정
+        findItem.setOpen(updateParam.getOpen());
+        findItem.setRegions(updateParam.getRegions());
+        findItem.setItemType(updateParam.getItemType());
+        findItem.setDeliveryCode(updateParam.getDeliveryCode());
     }
 
     public void clearStore() {
