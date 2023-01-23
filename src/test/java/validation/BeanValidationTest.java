@@ -1,6 +1,6 @@
 package validation;
 
-import hello.domain.item.Item;
+import hello.domain.item.itemService.Item;
 import org.junit.jupiter.api.Test;
 
 import javax.validation.ConstraintViolation;
