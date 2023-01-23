@@ -1,7 +1,7 @@
 package hello;
 
-import hello.domain.item.Item;
-import hello.domain.item.ItemRepository;
+import hello.domain.item.itemService.Item;
+import hello.domain.item.itemService.ItemRepository;
 import hello.domain.member.Member;
 import hello.domain.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
