@@ -1,7 +1,7 @@
 package hello;
 
 import hello.web.argumentresolver.LoginMemberArgumentResolver;
-import hello.web.fiter.LogFilter;
+import hello.web.filter.LogFilter;
 import hello.web.interceptor.LogInterceptor;
 import hello.web.interceptor.LoginCheckInterceptor;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -32,14 +32,14 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LogInterceptor())
                 .order(1) //인터셉터 호출 순서
                 .addPathPatterns("/**") //인터셉터를 적용할 URL 패턴
-                .excludePathPatterns("/css/**", ",*.ico", "/error"); //인터셉터에서 제외할 패턴
+                .excludePathPatterns("/css/**", ",*.ico", "/error", "/index.html", "/item-form", "/item-view", "/upload-form"); //인터셉터에서 제외할 패턴
 
         //LoginCheckInterceptor
         registry.addInterceptor(new LoginCheckInterceptor())
                 .order(2) //인터셉터 호출 순서
                 .addPathPatterns("/**") //인터셉터를 적용할 URL 패턴
                 .excludePathPatterns("/", "/members/add", "/login", "/logout",
-                        "/css/**", "/*.ico", "/error"); //인터셉터에서 제외할 패턴
+                        "/css/**", "/*.ico", "/error", "/index.html", "/item-form", "/item-view", "/upload-form"); //인터셉터에서 제외할 패턴
     }
 
     /**
