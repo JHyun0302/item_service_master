@@ -29,12 +29,12 @@ public class UploadController {
     private final UploadFileRepository uploadFileRepository;
     private final FileStore fileStore;
 
-    @GetMapping("/items/new")
+    @GetMapping("/uploaditems/new")
     public String newItem(@ModelAttribute UploadForm uploadForm) {
         return "/upload/item-form";
     }
 
-    @PostMapping("/items/new")
+    @PostMapping("/uploaditems/new")
     public String saveItem(@ModelAttribute UploadForm form, RedirectAttributes redirectAttributes) throws IOException {
         UploadFile attachFile = fileStore.storeFile(form.getAttachFile());
         List<UploadFile> storeFiles = fileStore.storeFiles(form.getImageFiles());
@@ -47,10 +47,10 @@ public class UploadController {
         uploadFileRepository.save(uploadItem);
 
         redirectAttributes.addAttribute("itemId", uploadItem.getId());
-        return "redirect:/items/{itemId}";
+        return "redirect:/uploaditems/{itemId}";
     }
 
-    @GetMapping("/items/{id}")
+    @GetMapping("/uploaditems/{id}")
     public String items(@PathVariable Long id, Model model) {
         UploadItem item = uploadFileRepository.findById(id);
         model.addAttribute("item", item);
